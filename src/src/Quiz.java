@@ -281,10 +281,10 @@ public class Quiz extends JFrame implements ActionListener {
         int new_count = count + 1;
         question_number.setText(Integer.toString(new_count) + ".");
         question.setText(questions[count][0]);
-        option_1.setText(questions[count][0]);
-        option_1.setActionCommand(questions[count][0]);
-        option_2.setText(questions[count][1]);
-        option_2.setActionCommand(questions[count][1]);
+        option_1.setText(questions[count][1]);
+        option_1.setActionCommand(questions[count][1]);
+        option_2.setText(questions[count][2]);
+        option_2.setActionCommand(questions[count][2]);
         option_3.setText(questions[count][3]);
         option_3.setActionCommand(questions[count][3]);
         option_4.setText(questions[count][4]);
