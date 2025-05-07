@@ -17,8 +17,11 @@ public class Quiz extends JFrame implements ActionListener {
     public static int timer = 30;
     public static int ans_given = 0;
     public static int count = 0;
+    public static int score = 0;
+    String username;
 
-    public Quiz(){
+    public Quiz(String username){
+        this.username = username;
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
@@ -198,8 +201,20 @@ public class Quiz extends JFrame implements ActionListener {
                 option_4.setEnabled(false);
             }
             lifeline.setEnabled(false);
-        } else {
-
+        } else if (e.getSource() == submit){
+            ans_given = 1;
+            if (group_options.getSelection() == null){
+                user_answers[count][0] = "";
+            } else {
+                user_answers[count][0] = group_options.getSelection().getActionCommand();
+            }
+            for (int i = 0; i < user_answers.length; i++){
+                if (user_answers[i][0].equals(answers[i][0])){
+                    score += 10;
+                }
+            }
+            setVisible(false);
+            new Score(username, score);
         }
     }
 
@@ -242,6 +257,13 @@ public class Quiz extends JFrame implements ActionListener {
                 } else {
                     user_answers[count][0] = group_options.getSelection().getActionCommand();
                 }
+                for (int i = 0; i < user_answers.length; i++){
+                    if (user_answers[i][0].equals(answers[i][1])){
+                        score += 10;
+                    }
+                }
+                setVisible(false);
+                new Score(username, score);
 
             } else {
                 if (group_options.getSelection() == null) {
@@ -273,6 +295,6 @@ public class Quiz extends JFrame implements ActionListener {
 
 
     public static void main(String[] args){
-        new Quiz();
+        new Quiz("user");
     }
 }

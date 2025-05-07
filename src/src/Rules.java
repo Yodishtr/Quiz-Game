@@ -59,7 +59,8 @@ public class Rules extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e){
         if (e.getSource() == start){
-
+            setVisible(false);
+            new Quiz(name);
         } else if (e.getSource() == back){
             setVisible(false);
             new Login();
